@@ -6,11 +6,18 @@ document.querySelector('.number').textContent = secretNumber;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
+
+  //this is when there is no input
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No Number!';
-  } else if (guess === secretNumber) {
+  } // This is when guess is right
+  else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct Number';
-  } else if (guess > secretNumber) {
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+  }
+  //this is when guess is too high
+  else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📈 Too High';
       score--;
@@ -19,7 +26,9 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = '💥 you lost. try again';
       document.querySelector('.score').textContent = 0;
     }
-  } else if (guess < secretNumber) {
+  }
+  //this is when guess is too high
+  else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📉 Too Low';
       score--;
